@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lily Galiotto – Étudiante en BUT Informatique</title>
+<meta name="description" content="Lily Galiotto, étudiante en 2e année de BUT Informatique à l'IUT de Metz. Recherche un stage en systèmes et réseaux du 12 avril au 4 juin 2027.">
+<style>
+  :root {
+    --navy: #1b2f4b;
+    --accent: #2f6fb3;
+    --text: #1f2933;
+    --muted: #5f6b7a;
+    --line: #e3e8ef;
+    --bg: #ffffff;
+    --soft: #f5f7fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,0.95);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(6px);
+  }
+  .nav-inner {
+    max-width: 960px; margin: 0 auto; padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo { font-weight: 700; color: var(--navy); letter-spacing: 0.5px; }
+  .nav-links a { color: var(--muted); margin-left: 22px; font-size: 14px; }
+  .nav-links a:hover { color: var(--navy); text-decoration: none; }
+
+  /* En-tête */
+  header {
+    background: var(--navy); color: #fff;
+    padding: 80px 24px 70px;
+  }
+  .hero { max-width: 960px; margin: 0 auto; }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 13px; margin-bottom: 22px;
+  }
+  .status .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; }
+  header h1 { font-size: 44px; line-height: 1.15; margin-bottom: 10px; }
+  header .role { font-size: 20px; color: #c9d6e8; margin-bottom: 22px; }
+  header .pitch { max-width: 640px; color: #e4ebf5; margin-bottom: 30px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 11px 22px; border-radius: 6px;
+    font-weight: 600; font-size: 15px;
+  }
+  .btn-primary { background: #fff; color: var(--navy); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.5); color: #fff; }
+  .btn:hover { text-decoration: none; opacity: 0.9; }
+
+  /* Sections */
+  section { padding: 64px 24px; border-bottom: 1px solid var(--line); }
+  section:nth-of-type(even) { background: var(--soft); }
+  .container { max-width: 960px; margin: 0 auto; }
+  h2 {
+    font-size: 26px; color: var(--navy); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::before { content: ""; width: 28px; height: 3px; background: var(--accent); }
+
+  .about p { max-width: 760px; margin-bottom: 14px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .fact {
+    background: var(--soft); border: 1px solid var(--line);
+    padding: 8px 14px; border-radius: 6px; font-size: 14px;
+  }
+
+  /* Compétences */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .skill-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 22px;
+  }
+  .skill-card h3 { font-size: 16px; color: var(--navy); margin-bottom: 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 13px; padding: 4px 10px; border-radius: 4px;
+    background: #eaf1fa; color: var(--navy);
+  }
+
+  /* Projets */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .project {
+    border: 1px solid var(--line); border-radius: 10px; padding: 24px; background: #fff;
+    display: flex; flex-direction: column;
+  }
+  .project .meta { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .project h3 { font-size: 17px; color: var(--navy); margin-bottom: 10px; }
+  .project ul { padding-left: 18px; margin-bottom: 14px; color: var(--text); font-size: 15px; }
+  .project li { margin-bottom: 4px; }
+  .project .tags { margin-top: auto; }
+  .note { font-size: 14px; color: var(--muted); margin-top: 18px; }
+
+  /* Parcours */
+  .timeline { border-left: 2px solid var(--line); padding-left: 26px; }
+  .item { position: relative; margin-bottom: 32px; }
+  .item:last-child { margin-bottom: 0; }
+  .item::before {
+    content: ""; position: absolute; left: -33px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #fff; border: 3px solid var(--accent);
+  }
+  .item .when { font-size: 13px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .item h3 { font-size: 17px; color: var(--navy); margin: 2px 0; }
+  .item .where { color: var(--muted); font-size: 15px; margin-bottom: 8px; }
+  .item ul { padding-left: 18px; font-size: 15px; }
+  .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  h4 { font-size: 15px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 22px; }
+
+  .langs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .lang { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+  .lang strong { color: var(--navy); display: block; }
+  .lang span { color: var(--muted); font-size: 14px; }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact h2 { justify-content: center; }
+  .contact p { color: var(--muted); max-width: 560px; margin: 0 auto 26px; }
+  .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+  .contact-links a {
+    border: 1px solid var(--line); background: #fff; border-radius: 8px;
+    padding: 12px 20px; color: var(--navy); font-weight: 600;
+  }
+  .contact-links a:hover { border-color: var(--accent); text-decoration: none; }
+
+  footer { text-align: center; padding: 26px; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 720px) {
+    header h1 { font-size: 34px; }
+    .nav-links { display: none; }
+    .two-cols { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="logo">Lily Galiotto</span>
+    <div class="nav-links">
+      <a href="#apropos">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#projets">Projets</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="hero">
+    <div class="status"><span class="dot"></span>Recherche de stage · 12 avril – 4 juin 2027</div>
+    <h1>Lily Galiotto</h1>
+    <p class="role">Étudiante en BUT Informatique · Systèmes &amp; Réseaux</p>
+    <p class="pitch">Je recherche un stage de 8 semaines en systèmes et réseaux, en France ou au Luxembourg, pour mettre en pratique mes compétences au sein d'une équipe informatique.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="#contact">Me contacter</a>
+      <a class="btn btn-outline" href="CV_Lily_Galiotto.pdf" target="_blank">Télécharger mon CV</a>
+    </div>
+  </div>
+</header>
+
+<section id="apropos" class="about">
+  <div class="container">
+    <h2>À propos</h2>
+    <p>Je suis étudiante en 2e année de BUT Informatique à l'IUT de Metz (Université de Lorraine), dans le parcours <strong>déploiement d'applications communicantes et sécurisées</strong>.</p>
+    <p>Ce qui m'intéresse le plus, ce sont les réseaux et l'administration système : concevoir un plan d'adressage, configurer des équipements, faire communiquer des machines entre elles. J'ai aussi une première expérience professionnelle au Luxembourg, en contrôle qualité dans l'industrie, qui m'a appris la rigueur et le respect des procédures.</p>
+    <div class="facts">
+      <span class="fact">📍 Moselle (57)</span>
+      <span class="fact">🚗 Permis B, véhiculée</span>
+      <span class="fact">🇫🇷 🇱🇺 France ou Luxembourg</span>
+      <span class="fact">🗓️ Stage de 8 semaines</span>
+    </div>
+  </div>
+</section>
+
+<section id="competences">
+  <div class="container">
+    <h2>Compétences</h2>
+    <div class="skills">
+      <div class="skill-card">
+        <h3>Réseaux</h3>
+        <div class="tags">
+          <span class="tag">Adressage IP / VLSM</span>
+          <span class="tag">VLAN</span>
+          <span class="tag">Routage</span>
+          <span class="tag">Switchs et routeurs Cisco</span>
+          <span class="tag">Cisco Packet Tracer</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Systèmes</h3>
+        <div class="tags">
+          <span class="tag">Linux (Ubuntu)</span>
+          <span class="tag">Windows 11</span>
+          <span class="tag">VMware</span>
+          <span class="tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Développement</h3>
+        <div class="tags">
+          <span class="tag">C</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">PHP</span>
+          <span class="tag">SQL</span>
+          <span class="tag">HTML / CSS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Outils &amp; certification</h3>
+        <div class="tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">PIX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="container">
+    <h2>Projets</h2>
+    <div class="projects">
+      <div class="project">
+        <div class="meta">2026 · Projet d'équipe (4 personnes)</div>
+        <h3>Infrastructure réseau d'une application client-serveur</h3>
+        <ul>
+          <li>Conception du plan d'adressage IP (VLSM) et de l'adressage de tous les équipements</li>
+          <li>Mise en place des VLAN et du routage</li>
+          <li>Configuration et sécurisation des switchs et routeurs</li>
+        </ul>
+        <div class="tags"><span class="tag">Cisco</span><span class="tag">Packet Tracer</span><span class="tag">VLSM</span></div>
+      </div>
+      <div class="project">
+        <div class="meta">2026</div>
+        <h3>Interconnexion de machines virtuelles</h3>
+        <ul>
+          <li>Déploiement d'une VM Windows 11 et d'une VM Ubuntu</li>
+          <li>Configuration de routeurs et de switchs pour relier les machines</li>
+          <li>Tests de connectivité</li>
+        </ul>
+        <div class="tags"><span class="tag">VMware</span><span class="tag">Linux</span><span class="tag">Windows</span></div>
+      </div>
+      <div class="project">
+        <div class="meta">2026</div>
+        <h3>Script d'administration Linux</h3>
+        <ul>
+          <li>Outil de suivi des connexions des utilisateurs d'un système Linux</li>
+        </ul>
+        <div class="tags"><span class="tag">Bash</span><span class="tag">Linux</span></div>
+      </div>
+      <div class="project">
+        <div class="meta">2025 – 2026</div>
+        <h3>Développement</h3>
+        <ul>
+          <li>Jeu développé en langage C</li>
+          <li>Site web</li>
+        </ul>
+        <div class="tags"><span class="tag">C</span><span class="tag">HTML / CSS</span><span class="tag">PHP</span></div>
+      </div>
+    </div>
+    <p class="note">Projets réalisés dans le cadre de ma formation à l'IUT de Metz.</p>
+  </div>
+</section>
+
+<section id="parcours">
+  <div class="container">
+    <h2>Parcours</h2>
+    <div class="two-cols">
+      <div>
+        <h4>Formation</h4>
+        <div class="timeline">
+          <div class="item">
+            <div class="when">Depuis 2025</div>
+            <h3>BUT Informatique – 2e année</h3>
+            <div class="where">IUT de Metz, Université de Lorraine</div>
+            <ul><li>Parcours déploiement d'applications communicantes et sécurisées</li></ul>
+          </div>
+          <div class="item">
+            <div class="when">2025</div>
+            <h3>Baccalauréat général, mention Assez Bien</h3>
+            <div class="where">Lycée Julie-Daubié, Rombas</div>
+            <ul><li>Spécialités Mathématiques et Physique-Chimie</li></ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Expérience</h4>
+        <div class="timeline">
+          <div class="item">
+            <div class="when">Été 2026 · 1 mois</div>
+            <h3>Opératrice de production</h3>
+            <div class="where">Accumalux, Roeser (Luxembourg)</div>
+            <ul>
+              <li>Contrôle qualité de composants plastiques pour batteries</li>
+              <li>Conduite de machines et saisie sur poste informatique</li>
+              <li>Respect des procédures qualité et de sécurité</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="when">2024 – 2026</div>
+            <h3>Employée polyvalente en restauration</h3>
+            <div class="where">Miss Yu (Fameck) et Le Grand Buffet</div>
+            <ul>
+              <li>Accueil, conseil client et encaissement</li>
+              <li>Travail en équipe en période de forte affluence</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="langues">
+  <div class="container">
+    <h2>Langues &amp; centres d'intérêt</h2>
+    <div class="langs">
+      <div class="lang"><strong>Français</strong><span>Langue maternelle</span></div>
+      <div class="lang"><strong>Anglais</strong><span>B1</span></div>
+      <div class="lang"><strong>Allemand</strong><span>A2 (niveau scolaire)</span></div>
+      <div class="lang"><strong>Sport</strong><span>Pratique régulière, football</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>Vous proposez un stage en systèmes et réseaux entre le 12 avril et le 4 juin 2027 ? Je serais ravie d'en discuter.</p>
+    <div class="contact-links">
+      <a href="mailto:lilygaliotto@gmail.com">✉️ lilygaliotto@gmail.com</a>
+      <a href="https://github.com/lilygltt" target="_blank">GitHub · lilygltt</a>
+      <a href="CV_Lily_Galiotto.pdf" target="_blank">📄 Mon CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Lily Galiotto</footer>
+
+</body>
+</html>
